@@ -13,11 +13,11 @@ variable "env_name" {
 }
 
 # Elastic Cloud
-variable "elasticcloud_apikey" {
-   description  = "https://www.elastic.co/guide/en/cloud/current/ec-api-authentication.html"
-   type         = string
-   sensitive    = true
-}
+#variable "elasticcloud_apikey" {
+#   description  = "https://www.elastic.co/guide/en/cloud/current/ec-api-authentication.html"
+#   type         = string
+#   sensitive    = true
+#}
 variable "deployment_name" {
     type        = string
     description = "The name of the elastic cloud deployment"

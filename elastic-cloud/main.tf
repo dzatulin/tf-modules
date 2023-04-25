@@ -1,13 +1,3 @@
-terraform {
-    required_version = ">= 0.12.29"
-
-    required_providers {
-        ec = {
-            source  = "elastic/ec"
-            version = "0.6.0"
-        }
-    }
-}
 #Create SG for PrivateLink
 resource "aws_security_group" "private-link" {
     name   = var.aws_resource_name
