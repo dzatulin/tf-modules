@@ -7,6 +7,9 @@ variable "aws_resource_name" {
 variable "region" {
     type        = string
 }
+variable "ec_region" {
+    type        = string
+}
 
 variable "deployment_name" {
     type        = string
