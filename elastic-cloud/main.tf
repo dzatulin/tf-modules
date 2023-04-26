@@ -58,7 +58,7 @@ resource "aws_route53_record" "private-link" {
 # Create an Elastic Cloud deployment
 resource "ec_deployment" "cloud_deployment" {
   name                   = var.deployment_name
-  region                 = var.region
+  region                 = var.ec_region
   version                = var.deployment_version
   deployment_template_id = var.deployment_template
 
@@ -82,7 +82,7 @@ resource "ec_deployment" "cloud_deployment" {
 resource "ec_deployment_traffic_filter" "deployment_filter" {
   name   = var.filter_name
   type   = "vpce"
-  region = var.region
+  region = var.ec_region
 
   rule {
     source = aws_vpc_endpoint.private-link.id
