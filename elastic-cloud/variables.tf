@@ -4,9 +4,7 @@ variable "aws_resource_name" {
     description = "The name used for objects on AWS"
     default     = "elastic-cloud-link"
 }
-variable "region" {
-     default = "us-east-1"
-}
+variable "region" {}
 
 variable "env_name" {
   default = "dev"
