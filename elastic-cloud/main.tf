@@ -24,7 +24,7 @@ resource "aws_vpc_endpoint" "private-link" {
     vpc_endpoint_type = "Interface"
 
     security_group_ids = [ aws_security_group.private-link.id ]
-    #subnet_ids         = var.subnet_ids
+    subnet_ids         = var.subnet_ids
 
     tags = {
         Name = var.aws_resource_name
