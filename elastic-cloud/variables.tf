@@ -42,8 +42,8 @@ variable "vpc_id" {
 #Private Link
 variable "service_name" {
     type        = string
-    description = "The PrivateLink service name for your elastic cloud deployment. By default, us-east-1 (https://www.elastic.co/guide/en/cloud/current/ec-traffic-filtering-vpc.html)"
-    default     = "com.amazonaws.vpce.us-east-1.vpce-svc-0e42e1e06ed010238"
+    description = "The PrivateLink service name for your elastic cloud deployment. By default, us-east-2 (https://www.elastic.co/guide/en/cloud/current/ec-traffic-filtering-vpc.html)"
+    default     = "com.amazonaws.vpce.us-east-2.vpce-svc-02d187d2849ffb478"
 }
 variable "extra_security_groups" {
     type        = list(string)
