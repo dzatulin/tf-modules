@@ -65,6 +65,11 @@ variable "record_ttl" {
 }
 variable "deployment_filter_name" {
     type        = string
-    description = "Name for the traffic filter on elastic cloud"
+    description = "Name for the traffic filter for PrivateLink"
+    default     = "Allow traffic from AWS VPC"
+}
+variable "external_filter_name" {
+    type        = string
+    description = "Name for the traffic filter for PrivateLink"
     default     = "Allow traffic from AWS VPC"
 }
