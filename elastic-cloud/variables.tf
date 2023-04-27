@@ -1,7 +1,7 @@
 #AWS
 variable "aws_resource_name" {
     type        = string
-    description = "The name used for objects on AWS"
+    description = "AWS objects name"
     default     = "elastic-cloud-link"
 }
 variable "region" {
@@ -10,16 +10,13 @@ variable "region" {
 variable "ec_region" {
     type        = string
 }
-
 variable "deployment_name" {
     type        = string
     description = "The name of the elastic cloud deployment"
-#    default     = "elastic-cloud-default"
 }
 variable "deployment_version" {
     type        = string
     description = "Version of the elastic deployment. (https://registry.terraform.io/providers/elastic/ec/latest/docs/data-sources/ec_stack)"
-#    default     = "8.7.0"
 }
 variable "deployment_template" {
     type        = string
@@ -30,17 +27,15 @@ variable "deployment_template" {
 variable "ingress_cidr" {
     type        = list(string)
     description = "CIDR Blocks that are allowed to connect to elastic cloud via the VPC"
-#    default     = ["10.1.0.0/24"]
-}
-variable "sourceip" {
-    default     = "0.0.0.0/0"
-    type        = string
-    description = "traffic filter source"
 }
 variable "vpc_id" {
     type        = string
     description = "VPC ID"
-#    default     = "vpc-58e01823"
+}
+variable "sourceip" {
+    default     = "0.0.0.0/0"
+    type        = string
+    description = "External addresses, EC and Kibana access"
 }
 #Private Link
 variable "service_name" {
@@ -56,7 +51,6 @@ variable "extra_security_groups" {
 variable "subnet_ids" {
     type        = list(string)
     description = "ID's of the subnets to use for the VPCE. Be aware they MUST be in the supported AZ (https://www.elastic.co/guide/en/cloud/current/ec-traffic-filtering-vpc.html#ec-traffic-filtering-vpc)"
-#    default = ["subnet-9781c1ca"]
 }
 #Route53
 variable "zone_name" {
@@ -69,7 +63,7 @@ variable "record_ttl" {
     description = "TTL for the Route53 Record. By default: 300"
     default     = "300"
 }
-variable "filter_name" {
+variable "deployment_filter_name" {
     type        = string
     description = "Name for the traffic filter on elastic cloud"
     default     = "Allow traffic from AWS VPC"
