@@ -5,9 +5,11 @@ variable "aws_resource_name" {
     default     = "elastic-cloud-link"
 }
 variable "region" {
+    description = "AWS region for objects"
     type        = string
 }
 variable "ec_region" {
+    description = "EC region for deployment"
     type        = string
 }
 variable "deployment_name" {
@@ -16,11 +18,11 @@ variable "deployment_name" {
 }
 variable "deployment_version" {
     type        = string
-    description = "Version of the elastic deployment. (https://registry.terraform.io/providers/elastic/ec/latest/docs/data-sources/ec_stack)"
+    description = "Elasticsearch version"
 }
 variable "deployment_template" {
     type        = string
-    description = "Deployment template ID. (https://www.elastic.co/guide/en/cloud-enterprise/current/ece-deployment-templates.html)"
+    description = "Deployment instances type"
     default     = "aws-io-optimized-v2"
 }
 # Network
@@ -32,10 +34,14 @@ variable "vpc_id" {
     type        = string
     description = "VPC ID"
 }
+variable "subnet_ids" {
+    type        = list(string)
+    description = "Subnet ID"
+} 
 variable "sourceip" {
-    default     = "0.0.0.0/0"
     type        = string
     description = "External addresses, EC and Kibana access"
+     default     = "0.0.0.0/0"
 }
 #Private Link
 variable "service_name" {
@@ -43,20 +49,11 @@ variable "service_name" {
     description = "The PrivateLink service name for your elastic cloud deployment. By default, us-east-2 (https://www.elastic.co/guide/en/cloud/current/ec-traffic-filtering-vpc.html)"
     default     = "com.amazonaws.vpce.us-east-2.vpce-svc-02d187d2849ffb478"
 }
-variable "extra_security_groups" {
-    type        = list(string)
-    description = "Extra security groups attached to the VPCE for the PrivateLink"
-    default     = [ ]
-}
-variable "subnet_ids" {
-    type        = list(string)
-    description = "ID's of the subnets to use for the VPCE. Be aware they MUST be in the supported AZ (https://www.elastic.co/guide/en/cloud/current/ec-traffic-filtering-vpc.html#ec-traffic-filtering-vpc)"
-}
 #Route53
 variable "zone_name" {
     type        = string
-    description = "Route53 zone name. By default: us-east-1"
-    default     = "vpce.us-east-1.aws.elastic-cloud.com"
+    description = "Route53 zone name. By default: us-east-2"
+    default     = "vpce.us-east-2.aws.elastic-cloud.com"
 }
 variable "record_ttl" {
     type        = string
@@ -71,5 +68,5 @@ variable "deployment_filter_name" {
 variable "external_filter_name" {
     type        = string
     description = "Name for the traffic filter for PrivateLink"
-    default     = "Allow traffic from AWS VPC"
+    default     = "Allow traffic from External IP"
 }
