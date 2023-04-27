@@ -63,7 +63,7 @@ resource "ec_deployment" "cloud_deployment" {
   deployment_template_id = var.deployment_template
 
   #traffic_filter = merge([ ec_deployment_traffic_filter.deployment_filter.id ], var.extra_traffic_filters)
-  traffic_filter = [ ec_deployment_traffic_filter.deployment_filter.id ]
+  traffic_filter = [ ec_deployment_traffic_filter.deployment_filter.id, ec_deployment_traffic_filter.external_filter.id  ]
 
   elasticsearch = {
     autoscale = "false"
