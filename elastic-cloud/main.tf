@@ -78,9 +78,9 @@ resource "ec_deployment" "cloud_deployment" {
   }
 }
 
-# Elastic Cloud traffic filter
+# Elastic Cloud traffic filter for VPC
 resource "ec_deployment_traffic_filter" "deployment_filter" {
-  name   = var.filter_name
+  name   = var.deployment_filter_name
   type   = "vpce"
   region = var.ec_region
 
@@ -88,6 +88,16 @@ resource "ec_deployment_traffic_filter" "deployment_filter" {
     source = aws_vpc_endpoint.private-link.id
   }
   depends_on = [ aws_vpc_endpoint.private-link ]
+}
+# Elastic Cloud external traffic filter for VPN(Pritunl)
+resource "ec_deployment_traffic_filter" "external_filter" {
+  name   = var.external_filter_name
+  type   = "ip"
+  region = var.ec_region
+
+  rule {
+    source = var.sourceip
+  }
 }
 
 # resource "null_resource" "elastisearch-initial-settings" {
